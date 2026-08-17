@@ -1,0 +1,58 @@
+/* components.css — shared reusable pieces: buttons, bars, theme toggle */
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  transition: transform var(--speed-fast) ease, box-shadow var(--speed-fast) ease, background var(--speed-fast) ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(90deg, var(--rainbow-violet), var(--rainbow-blue), var(--rainbow-teal));
+  background-size: 200% auto;
+  box-shadow: 0 8px 24px rgba(122, 88, 246, 0.35);
+}
+.btn-primary:hover {
+  background-position: 100% center;
+  box-shadow: 0 10px 30px rgba(10, 132, 255, 0.4);
+  color: #fff;
+}
+
+.btn-ghost {
+  color: var(--text);
+  border-color: var(--line-strong);
+  background: transparent;
+}
+.btn-ghost:hover { border-color: var(--rainbow-violet); color: var(--text); box-shadow: 0 0 0 1px var(--rainbow-violet); }
+
+/* rainbow bar (per-card hue via inline style) */
+.rainbow-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--gradient-rainbow);
+  background-size: 200% auto;
+}
+
+/* theme toggle */
+.theme-toggle {
+  margin-left: 8px;
+  width: 40px; height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  font-size: 1.1rem;
+  transition: transform var(--speed-fast) ease, border-color var(--speed-fast) ease;
+}
+.theme-toggle:hover { border-color: var(--rainbow-teal); transform: translateY(-1px); }

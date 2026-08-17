@@ -1,0 +1,13 @@
+# temp / local
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+
+# vscode
+.vscode/
+.idea/
+
+# never commit these
+*.local
+.env

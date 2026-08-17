@@ -1,0 +1,125 @@
+/* a11y.css — all accessibility modes are data-attributes on <html>, set by js/a11y/a11y-state.js */
+
+/* --- font size scaling --- */
+html[data-font-size="small"] { --font-scale: 0.85; }
+html[data-font-size="default"] { --font-scale: 1; }
+html[data-font-size="large"] { --font-scale: 1.15; }
+html[data-font-size="xlarge"] { --font-scale: 1.35; }
+
+/* --- high contrast --- */
+html[data-contrast="high"] {
+  --bg: #000000;
+  --bg-alt: #0a0a0a;
+  --bg-elevated: #101010;
+  --surface: #141414;
+  --surface-hover: #1c1c1c;
+  --text: #ffffff;
+  --text-dim: #f2f2f2;
+  --text-faint: #d6d6d6;
+  --line: rgba(255, 255, 255, 0.35);
+  --line-strong: rgba(255, 255, 255, 0.7);
+  --shadow: none;
+}
+html[data-theme="light"][data-contrast="high"] {
+  --bg: #ffffff;
+  --bg-alt: #f7f7f7;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #efefef;
+  --text: #000000;
+  --text-dim: #111111;
+  --text-faint: #222222;
+  --line: rgba(0, 0, 0, 0.5);
+  --line-strong: rgba(0, 0, 0, 0.8);
+}
+html[data-contrast="high"] .section-tint { background: var(--bg-alt); }
+html[data-contrast="high"] .tag { border-color: currentColor; }
+html[data-contrast="high"] a { text-decoration: underline; text-underline-offset: 3px; }
+html[data-contrast="high"] .btn-primary { color: #000; text-decoration: none; }
+html[data-contrast="high"] .rainbow-text {
+  -webkit-text-fill-color: var(--text);
+  color: var(--text);
+  background: none;
+  animation: none;
+}
+
+/* --- dyslexia friendly font --- */
+html[data-dyslexic="true"] {
+  --font-body: "OpenDyslexic", "Comic Sans MS", "Inter", sans-serif;
+  --font-display: "OpenDyslexic", "Comic Sans MS", sans-serif;
+  --letter-spacing-body: 0.03em;
+}
+html[data-dyslexic="true"] .section-kicker,
+html[data-dyslexic="true"] .project-links a,
+html[data-dyslexic="true"] .skill-name,
+html[data-dyslexic="true"] .chaos-item-name,
+html[data-dyslexic="true"] .footer-meta,
+html[data-dyslexic="true"] .nav-brand,
+html[data-dyslexic="true"] .hero-eyebrow {
+  font-family: var(--font-body);
+  letter-spacing: 0.02em;
+}
+
+/* --- spacing toggles (line/letter/word) --- */
+html[data-spacing-line="1"] { --line-height-body: 1.7; }
+html[data-spacing-line="2"] { --line-height-body: 1.95; }
+html[data-spacing-line="3"] { --line-height-body: 2.2; }
+
+html[data-spacing-letter="1"] { --letter-spacing-body: 0em; }
+html[data-spacing-letter="2"] { --letter-spacing-body: 0.04em; }
+html[data-spacing-letter="3"] { --letter-spacing-body: 0.09em; }
+
+html[data-spacing-word="1"] { --word-spacing-body: 0em; }
+html[data-spacing-word="2"] { --word-spacing-body: 0.12em; }
+html[data-spacing-word="3"] { --word-spacing-body: 0.3em; }
+
+/* --- reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+html[data-motion="reduced"] { scroll-behavior: auto; }
+html[data-motion="reduced"] .hero-scroll { display: none; }
+
+/* --- color blindness filters (applied to body, best-effort) --- */
+html[data-cvd="protanopia"] body { filter: url("#cvd-protanopia"); }
+html[data-cvd="deuteranopia"] body { filter: url("#cvd-deuteranopia"); }
+html[data-cvd="tritanopia"] body { filter: url("#cvd-tritanopia"); }
+html[data-cvd="grayscale"] body { filter: grayscale(1); }
+html[data-cvd="none"] body { filter: none; }
+
+/* --- focus visibility (always on, but a11y mode makes it louder) --- */
+html[data-focus="loud"] :focus-visible {
+  outline: 4px solid var(--rainbow-yellow);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 2px #000;
+}
+
+/* --- screen dimmer / reduce glare --- */
+html[data-glare="dim"] body {
+  filter: brightness(0.92) contrast(1.02);
+}
+html[data-glare="sepia"] body {
+  filter: sepia(0.35) brightness(0.98);
+}
+
+/* --- always keep focusable interactive things visible --- */
+@media (prefers-contrast: more) {
+  a { text-decoration: underline; text-underline-offset: 3px; }
+}
+
+/* reduced transparency */
+@media (prefers-reduced-transparency: reduce) {
+  .site-header { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
