@@ -69,6 +69,18 @@ export const PROJECTS = [
     tags: ["JS", "Firebase", "Firestore", "i18n"],
     stats: { commits: "1", stars: "0" },
   },
+  {
+    name: "cert-forms-center",
+    tagline: "disaster-sim paperwork, minus the paper",
+    icon: "📋",
+    hue: RAINBOW[5],
+    url: "https://github.com/legobele/cert-forms-center",
+    live: "https://legobele.github.io/cert-forms-center/",
+    description:
+      "Bilingual (ES-first) command center for CERT disaster simulations. Fill and sign all 8 official CERT forms right in the browser, snap photos or import scans, and watch everything land on a live incident dashboard. Offline-first, kiosk mode with a PIN lock for field use.",
+    tags: ["JS", "Firebase", "Firestore", "i18n", "PWA"],
+    stats: { commits: "0", stars: "0" },
+  },
 ];
 
 export const SKILLS = [
