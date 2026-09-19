@@ -57,6 +57,18 @@ export const PROJECTS = [
     tags: ["Vite", "React", "Firestore", "Firebase", "kiosk"],
     stats: { commits: "5", stars: "0" },
   },
+  {
+    name: "cert-practice-test",
+    tagline: "honorlock with extra steps",
+    icon: "🛡️",
+    hue: RAINBOW[2],
+    url: "https://github.com/legobele/cert-practice-test",
+    live: "https://legobele.github.io/cert-practice-test/",
+    description:
+      "Bilingual (ES/EN) 27-question CERT practice quiz. Static site, zero build step — with an unreasonable amount of anti-cheat for a practice test: device fingerprinting, tab-switch/copy-paste/devtools heuristics, single-use action keys, Firestore telemetry, an organizer panel, and a ban appeal flow.",
+    tags: ["JS", "Firebase", "Firestore", "i18n"],
+    stats: { commits: "1", stars: "0" },
+  },
 ];
 
 export const SKILLS = [

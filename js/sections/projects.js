@@ -1,4 +1,4 @@
-/* projects.js — renders the big-three project cards from config.js.
+/* projects.js — renders the project cards from config.js.
    Each card gets a data-reveal for scroll-in, and its own hue. */
 
 import { h, $, append, clear } from "../utils/dom.js";
