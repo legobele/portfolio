@@ -7,7 +7,7 @@ import { h, $, append } from "./utils/dom.js";
 import { announce } from "./a11y/a11y-announce.js";
 import { register } from "./registry.js";
 
-const STORAGE_KEY = "portfolio:theme";
+const STORAGE_KEY = "portfolio:theme:v2"; // v2: rebrand reset, imposing dark is the default
 const THEMES = ["dark", "rainbow", "light"];
 const LABELS = { dark: "🌙", rainbow: "🌈", light: "☀️" };
 
