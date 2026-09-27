@@ -1,34 +1,53 @@
-/* tokens.css — the rainbow system. every color is a variable, obviously. */
+/* tokens.css — IMPOSING VOGUE applied to the portfolio.
+   Canonical system: https://github.com/legobele/imposing-vogue
+   This file is the vendored adaptation: every legacy variable name is kept
+   (a11y.css, responsive.css and js/config.js reference them) but repointed
+   at the Imposing Vogue palette. Visual layer only — no markup/JS changes. */
 
 :root {
-  --rainbow-red: #ff3b3b;
-  --rainbow-orange: #ff9500;
-  --rainbow-yellow: #ffd60a;
-  --rainbow-green: #34c759;
-  --rainbow-teal: #30d5c8;
-  --rainbow-blue: #0a84ff;
-  --rainbow-indigo: #5e5ce6;
-  --rainbow-violet: #bf5af2;
-  --rainbow-pink: #ff2d92;
+  /* ---- imposing vogue core ---- */
+  --ink:        #111214;
+  --ink-2:      #222222;
+  --paper:      #ffffff;
+  --bone:       #f6f6f6;
+  --chartreuse: #d7e14b;  /* primary energy accent — restraint, always */
+  --signal:     #c83430;  /* secondary accent — one detail max        */
+  --cobalt:     #0e70ee;
 
-  --bg: #0b0d14;
-  --bg-alt: #12141f;
-  --bg-elevated: #191c2b;
-  --surface: #1e2133;
-  --surface-hover: #262a40;
+  /* ---- legacy hue names, remapped to the vogue palette.
+          js/config.js assigns these per project card. ---- */
+  --rainbow-red:    #c83430;
+  --rainbow-orange: #d08a3e;
+  --rainbow-yellow: #d7e14b;
+  --rainbow-green:  #9aa83f;
+  --rainbow-teal:   #d7e14b;
+  --rainbow-blue:   #0e70ee;
+  --rainbow-indigo: #6b6f76;
+  --rainbow-violet: #8f9499;
+  --rainbow-pink:   #c83430;
 
-  --text: #eef0f6;
-  --text-dim: #a2a8c0;
-  --text-faint: #6b7191;
+  /* ---- surfaces: dark editorial (default "imposing" theme) ---- */
+  --bg:           #111214;
+  --bg-alt:       #161719;
+  --bg-elevated:  #1c1e20;
+  --surface:      #1a1c1e;
+  --surface-hover:#232527;
 
-  --line: rgba(238, 240, 246, 0.08);
-  --line-strong: rgba(238, 240, 246, 0.16);
+  --text:       #f4f4f2;
+  --text-dim:   #b9bcbd;
+  --text-faint: #7d8184;
 
-  --gradient-rainbow: linear-gradient(90deg, var(--rainbow-red), var(--rainbow-orange), var(--rainbow-yellow), var(--rainbow-green), var(--rainbow-teal), var(--rainbow-blue), var(--rainbow-indigo), var(--rainbow-violet), var(--rainbow-pink), var(--rainbow-red));
+  --line:        rgba(244, 244, 242, 0.10);
+  --line-strong: rgba(244, 244, 242, 0.24);
 
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+  --gradient-rainbow: linear-gradient(90deg, var(--chartreuse), #9aa83f, var(--ink-2));
+
+  /* ---- type ---- */
+  --font-body:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Bodoni Moda", "Didot", "Bodoni MT", serif;
+  --font-script:  "Pinyon Script", "Snell Roundhand", cursive;
+  --font-serif:   "EB Garamond", Georgia, serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
 
   --font-scale: 1;
   --font-size-base: calc(1rem * var(--font-scale));
@@ -36,15 +55,26 @@
   --letter-spacing-body: 0em;
   --word-spacing-body: 0em;
 
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
+  --ls-luxe: 0.22em;   /* the luxury signal: kickers, labels */
+  --ls-wide: 0.12em;
+  --ls-tight: -0.02em;
 
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-  --focus-ring: 3px solid var(--rainbow-teal);
+  /* ---- shape: editorial sharpness, pill CTAs ---- */
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-pill: 100px;
+
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --shadow-cinematic:
+    0 1px 0 rgba(0,0,0,.55),
+    0 2px 12px rgba(0,0,0,.55),
+    0 8px 40px rgba(0,0,0,.65);
+
+  --focus-ring: 3px solid var(--chartreuse);
   --focus-offset: 3px;
 
-  --content-max: 1080px;
+  --content-max: 1160px;
   --nav-height: 68px;
 
   --speed-fast: 140ms;
@@ -54,31 +84,36 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* "dark" — deeper ink. same system, lights lower. */
 [data-theme="dark"] {
-  --bg: #0b0d14;
-  --bg-alt: #12141f;
-  --bg-elevated: #191c2b;
-  --surface: #1e2133;
-  --surface-hover: #262a40;
-  --text: #eef0f6;
-  --text-dim: #a2a8c0;
-  --text-faint: #6b7191;
-  --line: rgba(238, 240, 246, 0.08);
-  --line-strong: rgba(238, 240, 246, 0.16);
+  --bg:           #0c0d0e;
+  --bg-alt:       #121315;
+  --bg-elevated:  #17181a;
+  --surface:      #141518;
+  --surface-hover:#1d1f22;
+  --text:       #f4f4f2;
+  --text-dim:   #b9bcbd;
+  --text-faint: #7d8184;
+  --line:        rgba(244, 244, 242, 0.10);
+  --line-strong: rgba(244, 244, 242, 0.24);
 }
 
+/* "light" — vogue paper mode. */
 [data-theme="light"] {
-  --bg: #fdfcf8;
-  --bg-alt: #f4f2ea;
-  --bg-elevated: #ffffff;
-  --surface: #ffffff;
-  --surface-hover: #f0eee6;
-  --text: #191c2b;
-  --text-dim: #4d5470;
-  --text-faint: #7b83a3;
-  --line: rgba(25, 28, 43, 0.1);
-  --line-strong: rgba(25, 28, 43, 0.2);
-  --shadow: 0 10px 30px rgba(25, 28, 43, 0.12);
+  --bg:           #ffffff;
+  --bg-alt:       #f6f6f6;
+  --bg-elevated:  #ffffff;
+  --surface:      #ffffff;
+  --surface-hover:#efefec;
+  --text:       #111214;
+  --text-dim:   #4a4d4f;
+  --text-faint: #8a8d8f;
+  --line:        rgba(17, 18, 20, 0.12);
+  --line-strong: rgba(17, 18, 20, 0.30);
+  --shadow: 0 18px 50px rgba(17, 18, 20, 0.14);
+  --shadow-cinematic:
+    0 1px 0 rgba(255,255,255,.6),
+    0 2px 14px rgba(255,255,255,.5);
 }
 
 /* --- reset-ish --- */
@@ -110,17 +145,20 @@ body {
 
 img, svg, canvas { display: block; max-width: 100%; }
 
-a { color: var(--rainbow-teal); text-decoration: none; transition: color var(--speed-fast) ease; }
-a:hover { color: var(--rainbow-blue); }
+a { color: var(--chartreuse); text-decoration: none; transition: color var(--speed-fast) ease; }
+a:hover { color: var(--text); }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: var(--focus-ring);
   outline-offset: var(--focus-offset);
 }
+[data-theme="light"] a { color: #5c6b12; }
+[data-theme="light"] a:hover { color: var(--text); }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: var(--ls-tight);
 }
 
 ul { list-style: none; }
@@ -128,19 +166,19 @@ button { font-family: inherit; cursor: pointer; }
 input, select, textarea { font-family: inherit; color: inherit; }
 
 ::selection {
-  background: var(--rainbow-violet);
-  color: #fff;
+  background: var(--chartreuse);
+  color: var(--ink);
 }
 
-/* gradient shimmer for animated text */
+/* energy text: was the animated rainbow gradient, now chartreuse.
+   class name kept so every usage (kickers, typewriter, footer) follows. */
 .rainbow-text {
-  background: var(--gradient-rainbow);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: rainbow-slide 6s linear infinite;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: var(--chartreuse);
+  animation: none;
 }
 
 @keyframes rainbow-slide {

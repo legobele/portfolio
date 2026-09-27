@@ -1,4 +1,4 @@
-/* base.css — layout primitives, containers, section scaffolding */
+/* base.css — imposing vogue: layout primitives, nav, section scaffolding, footer */
 
 .container {
   width: min(calc(100% - 40px), var(--content-max));
@@ -11,31 +11,45 @@
 }
 
 .section-tint {
-  background:
-    radial-gradient(1200px 400px at 0% 0%, rgba(191, 90, 242, 0.08), transparent 60%),
-    radial-gradient(1200px 400px at 100% 100%, rgba(10, 132, 255, 0.08), transparent 60%),
-    var(--bg-alt);
+  background: var(--bg-alt);
 }
 
+/* kicker: the luxury signal */
 .section-kicker {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  margin-bottom: 12px;
+  letter-spacing: var(--ls-luxe);
+  margin-bottom: 14px;
 }
 
+/* section titles: imposing, numbered automatically */
 .section-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-tight);
+  line-height: 0.98;
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+.section-title::before {
+  content: "0" counter(iv-section);
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-luxe);
+  color: var(--chartreuse);
+  margin-bottom: 16px;
 }
 
 .section-lede {
   color: var(--text-dim);
   max-width: 56ch;
-  margin-bottom: 40px;
+  margin-bottom: 44px;
+  font-size: 1.05rem;
 }
 
 /* --- header / nav --- */
@@ -63,19 +77,20 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 1.05rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: var(--ls-tight);
   color: var(--text);
+  text-transform: lowercase;
 }
 .nav-brand:hover { color: var(--text); }
 
 .nav-brand-dot {
-  width: 12px; height: 12px;
+  width: 10px; height: 10px;
   border-radius: 50%;
-  background: var(--gradient-rainbow);
-  background-size: 200% auto;
-  animation: rainbow-slide 4s linear infinite;
+  background: var(--chartreuse);
+  flex-shrink: 0;
 }
 
 .nav-menu {
@@ -89,13 +104,15 @@
   padding: 8px 14px;
   border-radius: var(--radius-sm);
   color: var(--text-dim);
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
 }
-.nav-menu a:hover { color: var(--text); background: var(--surface); }
+.nav-menu a:hover { color: var(--chartreuse); background: transparent; }
 .nav-menu a[aria-current="true"] {
-  color: var(--text);
-  background: linear-gradient(90deg, rgba(191, 90, 242, 0.18), rgba(10, 132, 255, 0.18));
+  color: var(--chartreuse);
+  background: transparent;
 }
 
 .nav-toggle {
@@ -121,13 +138,22 @@
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* --- footer --- */
+/* --- footer: dark, disciplined --- */
 .site-footer {
+  background: #000;
   border-top: 1px solid var(--line);
-  padding-block: 40px;
+  padding-block: 56px 40px;
   text-align: center;
   color: var(--text-dim);
   font-size: 0.9rem;
 }
-.site-footer .container { display: grid; gap: 8px; }
+.site-footer .container { display: grid; gap: 10px; }
+.site-footer p:first-child {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-tight);
+  font-size: 1.3rem;
+  color: #fff;
+}
 .footer-meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); }
