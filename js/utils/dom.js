@@ -12,7 +12,14 @@ export function h(tag, attrs = {}, children = []) {
     if (value == null || value === false) continue;
     if (key === "class") el.className = value;
     else if (key === "dataset") Object.assign(el.dataset, value);
-    else if (key === "style") Object.assign(el.style, value);
+    else if (key === "style") {
+      // Object.assign silently drops CSS custom properties (--foo):
+      // they are not IDL attributes on CSSStyleDeclaration.
+      for (const [prop, val] of Object.entries(value)) {
+        if (prop.startsWith("--")) el.style.setProperty(prop, val);
+        else el.style[prop] = val;
+      }
+    }
     else if (key.startsWith("on") && typeof value === "function") {
       el.addEventListener(key.slice(2).toLowerCase(), value);
     } else if (key === "html") {

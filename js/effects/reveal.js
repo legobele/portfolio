@@ -44,7 +44,12 @@ const module = {
     new MutationObserver((mutations) => {
       for (const m of mutations) {
         for (const node of m.addedNodes) {
-          if (node.nodeType === Node.ELEMENT_NODE) scan(node);
+          if (node.nodeType !== Node.ELEMENT_NODE) continue;
+          // querySelectorAll only matches DESCENDANTS — but the section
+          // modules append the [data-reveal] nodes themselves, so check
+          // the added node too or nothing is ever observed.
+          if (node.matches("[data-reveal]:not([data-revealed])")) io.observe(node);
+          scan(node);
         }
       }
     }).observe(document.body, { childList: true, subtree: true });

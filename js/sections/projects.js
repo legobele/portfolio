@@ -18,9 +18,11 @@ function projectCard(p) {
     links.push(h("a", { href: p.live, target: "_blank", rel: "noopener noreferrer", text: "live →" }));
   }
 
-  const stats = Object.entries(p.stats).map(([k, v]) =>
-    h("span", { title: k, html: `⚑ ${v} ${k}` })
-  );
+  const stats = Object.entries(p.stats).map(([k, v]) => {
+    // "1 stars" is a crime. singularize on exactly 1.
+    const label = String(v).replace(/,/g, "") === "1" ? k.replace(/s$/, "") : k;
+    return h("span", { title: k, html: `⚑ ${v} ${label}` });
+  });
 
   return h("article", { class: "project-card", dataset: { reveal: "" }, style: { "--card-hue": hue } }, [
     h("div", { class: "project-card-top" }, [

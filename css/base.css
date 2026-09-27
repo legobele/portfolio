@@ -14,7 +14,7 @@
   background: var(--bg-alt);
 }
 
-/* kicker: the luxury signal */
+/* kicker: the luxury signal. section number rides inline — one line, not three. */
 .section-kicker {
   font-family: var(--font-body);
   font-size: 0.78rem;
@@ -23,8 +23,12 @@
   letter-spacing: var(--ls-luxe);
   margin-bottom: 14px;
 }
+.section-kicker::before {
+  content: "0" counter(iv-section) " — ";
+  color: var(--chartreuse);
+}
 
-/* section titles: imposing, numbered automatically */
+/* section titles: imposing, no stacked number */
 .section-title {
   font-size: clamp(2.2rem, 5.5vw, 3.8rem);
   font-weight: 900;
@@ -33,16 +37,6 @@
   line-height: 0.98;
   margin-bottom: 14px;
   text-wrap: balance;
-}
-.section-title::before {
-  content: "0" counter(iv-section);
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: var(--ls-luxe);
-  color: var(--chartreuse);
-  margin-bottom: 16px;
 }
 
 .section-lede {
@@ -114,6 +108,8 @@
   color: var(--chartreuse);
   background: transparent;
 }
+/* chartreuse on white fails contrast — darker olive for the active link */
+[data-theme="light"] .nav-menu a[aria-current="true"] { color: #67760f; }
 
 .nav-toggle {
   display: none;
@@ -156,4 +152,7 @@
   font-size: 1.3rem;
   color: #fff;
 }
+/* the footer stays true black in every theme — so its text stays light too */
+[data-theme="light"] .site-footer { color: #b9bcbd; }
+[data-theme="light"] .site-footer .footer-meta { color: #7d8184; }
 .footer-meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); }

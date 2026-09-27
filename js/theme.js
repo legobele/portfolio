@@ -1,5 +1,6 @@
-/* theme.js — rainbow / dark / light switcher. rainbow is the default vibe,
-   dark/light are the sane options. persisted to storage. */
+/* theme.js — dark / rainbow / light switcher. imposing dark is the default
+   vibe (the redesign is ink-black editorial); rainbow keeps the old aurora
+   for whoever wants it. persisted to storage. */
 
 import { get, set } from "./utils/storage.js";
 import { h, $, append } from "./utils/dom.js";
@@ -7,11 +8,11 @@ import { announce } from "./a11y/a11y-announce.js";
 import { register } from "./registry.js";
 
 const STORAGE_KEY = "portfolio:theme";
-const THEMES = ["rainbow", "dark", "light"];
-const LABELS = { rainbow: "🌈", dark: "🌙", light: "☀️" };
+const THEMES = ["dark", "rainbow", "light"];
+const LABELS = { dark: "🌙", rainbow: "🌈", light: "☀️" };
 
-let theme = get(STORAGE_KEY, "rainbow");
-if (!THEMES.includes(theme)) theme = "rainbow";
+let theme = get(STORAGE_KEY, "dark");
+if (!THEMES.includes(theme)) theme = "dark";
 
 function apply(next) {
   theme = next;

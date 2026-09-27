@@ -6,7 +6,6 @@ import { register } from "../registry.js";
 
 const TYPE_SPEED = 45;   // ms per char
 const HOLD_MS = 2200;    // pause at full phrase
-const DELETE_SPEED = 22; // ms per char while deleting
 
 const module = {
   name: "typewriter",
@@ -28,15 +27,13 @@ const module = {
     const step = () => {
       const phrase = phrases[index];
       if (deleting) {
-        charIndex -= 1;
-        el.textContent = phrase.slice(0, charIndex);
-        if (charIndex === 0) {
-          deleting = false;
-          index = (index + 1) % phrases.length;
-          setTimeout(step, 300);
-        } else {
-          setTimeout(step, DELETE_SPEED);
-        }
+        // clear instantly: char-by-char deletion flashes nonsense fragments
+        // like "MADE FULL" mid-cycle, which reads as a bug.
+        el.textContent = "";
+        deleting = false;
+        charIndex = 0;
+        index = (index + 1) % phrases.length;
+        setTimeout(step, 350);
       } else {
         charIndex += 1;
         el.textContent = phrase.slice(0, charIndex);

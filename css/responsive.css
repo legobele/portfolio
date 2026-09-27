@@ -23,10 +23,10 @@
   color: #fff;
   font-weight: 700;
   font-size: 0.9rem;
-  box-shadow: 0 10px 26px rgba(122, 88, 246, 0.4);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
   transition: transform var(--speed-fast) ease, box-shadow var(--speed-fast) ease;
 }
-.a11y-fab-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(10, 132, 255, 0.45); }
+.a11y-fab-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45); }
 .a11y-fab-btn[aria-expanded="true"] { background: linear-gradient(90deg, var(--rainbow-red), var(--rainbow-orange)); }
 
 .a11y-panel {
