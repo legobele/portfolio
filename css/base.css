@@ -72,7 +72,7 @@
   align-items: center;
   gap: 10px;
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 600;
   font-size: 1.3rem;
   letter-spacing: var(--ls-tight);
   color: var(--text);
@@ -146,7 +146,7 @@
 .site-footer .container { display: grid; gap: 10px; }
 .site-footer p:first-child {
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: var(--ls-tight);
   font-size: 1.3rem;
